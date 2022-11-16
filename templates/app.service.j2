@@ -13,7 +13,7 @@ WantedBy=multi-user.target
 
 [Service]
 Environment=SAMPLEPORT={{ app_port}}
-ExecStart=java -jar { app_dir }}/{{ app_file }} SuccessExitStatus=143
+ExecStart=java -jar {{ app_dir }}/{{ app_file }} --server.port=${SAMPLEPORT} SuccessExitStatus=143
 User=lab3user
 Restart=on-failure
 RestartSec=15
