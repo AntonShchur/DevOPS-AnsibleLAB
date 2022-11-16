@@ -4,12 +4,16 @@ TODO: Path to jar should use variables {{ app_dir }}/{{ app_file }}
 TODO: Environment variable for PORT should use value from variable {{ app_port }}
 #}
 [Unit]
-Description=
-Requires=
-After=
+Description=Lab3(Lab1)
+Requires=network.target
+After=network.target syslog.target
 
 [Install]
 WantedBy=multi-user.target
 
 [Service]
-ExecStart=
+Environment=SAMPLEPORT={{ app_port}}
+ExecStart=java -jar { app_dir }}/{{ app_file }} SuccessExitStatus=143
+User=lab3user
+Restart=on-failure
+RestartSec=15
